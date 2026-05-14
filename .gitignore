@@ -1,0 +1,318 @@
+# ================================================================================
+# Advanced E-Commerce Microservices - .gitignore
+# ================================================================================
+
+# ================================================================================
+# Operating System Files
+# ================================================================================
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.vfs
+*.s
+*~
+
+# Linux
+*~
+.fuse_hidden*
+.Directory_Index
+.metadata
+.metadata_v
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.settings/
+.classpath
+.prettierrc
+
+# ================================================================================
+# .NET / Visual Studio
+# ================================================================================
+
+# User specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# User-specific files (MonoDevelop/Xamarin Studio)
+*.userprefs
+
+# Build results
+[Bb]in/
+[Oo]bj/
+[Ww][Ii][Ll][Dd]/
+[Dd]ebug*/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio cache/options directory
+.vs/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.user
+*.userosscache
+*.sln.docstates
+
+# NuGet
+*.nupkg
+# NuGet packages directory
+packages/
+# except build, they are not - they are safe to commit
+#!.packages
+
+# Test Results
+[Tt]est[Rr]esult/
+[Bb]uild[Ll]og.*
+
+ MSTest test results
+*.trx
+
+# NUnit
+TestResult.xml
+nunit-*.xml
+
+# Builds
+*.log
+
+# ================================================================================
+# Java / Maven
+# ================================================================================
+
+# Compiled class files
+*.class
+
+# Package files
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# IntelliJ IDEA
+*.iml
+out/
+!../out
+
+# Eclipse
+.classpath
+.project
+.settings
+/.factorypath
+/cache
+/bin/
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# VS Code
+.vscode/
+
+# ================================================================================
+# Python / FastAPI
+# ================================================================================
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv
+pip-log.txt
+pip-delete-this-directory.txt
+
+# PyCharm
+.idea/
+
+# IPython
+profile_default/
+ipython_config.py
+
+# mypy
+.mypy_cache/
+
+# pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ================================================================================
+# Docker
+# ================================================================================
+
+# Docker compose override
+docker-compose.override.yml
+docker-compose.override.yaml
+
+# Docker Data/Volumes
+docker-data/
+
+# Container ID
+.containerid
+
+# ================================================================================
+# Database & Secrets
+# ================================================================================
+
+# Configuration files with secrets
+appsettings.*.json
+!appsettings.json
+!appsettings.Development.json
+config.yaml
+secrets.yaml
+credentials.json
+
+# Environment files
+.env
+.env.local
+.env.*.local
+*.pfx
+*.cer
+*.p12
+*.key
+*.pem
+*.crl
+
+# Logs
+*.log
+logs/
+access.log
+error.log
+
+# ================================================================================
+# Project Specific
+# ================================================================================
+
+# SQL Server data
+*.bak
+*.ldf
+
+# PostgreSQL data
+*pg_xlog/
+*pg_wal/
+postgresql.conf
+pg_hba.conf
+
+# Redis persistence
+dump.rdb
+appendonly.aof
+
+# Kafka data
+kafka-logs/
+zookeeper/
+__consumer_offsets-
+
+# KeyCloak
+standalone/
+standalone_full/
+
+# Test results
+test-results/
+coverage/
+
+# Documentation
+*.pdf
+*.doc
+*.docx
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.orig
+*~
+
+# ================================================================================
+# Exclude all profile-specific overrides
+# ================================================================================
+
+# Uncomment these if you want to use local overrides
+# infrastructure/docker-compose.override.yml
+# docker-compose.override.yml
+
+# ================================================================================
+# Keep Important Files
+# ================================================================================
+
+# DO NOT REMOVE THESE
+# !docker-compose.yml
+# !README.md
+# !requirements.md

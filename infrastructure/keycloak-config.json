@@ -1,0 +1,278 @@
+{
+  "realm": "ecommerce-realm",
+  "enabled": true,
+  "displayName": "E-Commerce Platform",
+  "displayNameHtml": "<div class=\"kc-logo-text\"><span>E-Commerce Platform</span></div>",
+  "accessTokenLifespan": 300,
+  "accessCodeLifespan": 60,
+  "ssoSessionIdleTimeout": 1800,
+  "ssoSessionMaxLifespan": 36000,
+  "clients": [
+    {
+      "clientId": "product-service",
+      "name": "Product Service Client",
+      "enabled": true,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "product-secret-key",
+      "redirectUris": [
+        "http://localhost:5000/*",
+        "http://product-service:5000/*"
+      ],
+      "webOrigins": [],
+      "publicClient": false,
+      "serviceAccountsEnabled": true,
+      "authorizationServicesEnabled": true,
+      "standardFlowEnabled": false,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": true,
+      "defaultClientScopes": [
+        "product:read",
+        "product:write"
+      ]
+    },
+    {
+      "clientId": "order-service",
+      "name": "Order Service Client",
+      "enabled": true,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "order-secret-key",
+      "redirectUris": [
+        "http://localhost:8080/*",
+        "http://order-service:8080/*"
+      ],
+      "webOrigins": [],
+      "publicClient": false,
+      "serviceAccountsEnabled": true,
+      "authorizationServicesEnabled": true,
+      "standardFlowEnabled": false,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": true,
+      "defaultClientScopes": [
+        "order:read",
+        "order:write"
+      ]
+    },
+    {
+      "clientId": "inventory-service",
+      "name": "Inventory Service Client",
+      "enabled": true,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "inventory-secret-key",
+      "redirectUris": [
+        "http://localhost:5001/*",
+        "http://inventory-service:5001/*"
+      ],
+      "webOrigins": [],
+      "publicClient": false,
+      "serviceAccountsEnabled": true,
+      "authorizationServicesEnabled": true,
+      "standardFlowEnabled": false,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": true,
+      "defaultClientScopes": [
+        "inventory:read",
+        "inventory:write"
+      ]
+    },
+    {
+      "clientId": "api-gateway",
+      "name": "API Gateway Client",
+      "enabled": true,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "gateway-secret-key",
+      "redirectUris": [
+        "http://localhost:5002/*",
+        "http://api-gateway:5002/*"
+      ],
+      "webOrigins": [],
+      "publicClient": false,
+      "serviceAccountsEnabled": false,
+      "standardFlowEnabled": false,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": true,
+      "defaultClientScopes": [
+        "openid",
+        "profile",
+        "email"
+      ]
+    },
+    {
+      "clientId": "frontend-app",
+      "name": "Frontend Application",
+      "enabled": true,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "frontend-secret-key",
+      "redirectUris": [
+        "http://localhost:3000/*",
+        "http://localhost:5173/*"
+      ],
+      "webOrigins": [
+        "http://localhost:3000",
+        "http://localhost:5173"
+      ],
+      "publicClient": false,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "defaultClientScopes": [
+        "openid",
+        "profile",
+        "email"
+      ]
+    }
+  ],
+  "roles": {
+    "realm": [
+      {
+        "name": "admin",
+        "description": "Administrator role with full access"
+      },
+      {
+        "name": "customer",
+        "description": "Customer role with limited access"
+      },
+      {
+        "name": "support",
+        "description": "Support staff role"
+      }
+    ],
+    "client": [
+      {
+        "client": "product-service",
+        "name": "product:read",
+        "description": "Read products"
+      },
+      {
+        "client": "product-service",
+        "name": "product:write",
+        "description": "Create/Update/Delete products"
+      },
+      {
+        "client": "order-service",
+        "name": "order:read",
+        "description": "Read orders"
+      },
+      {
+        "client": "order-service",
+        "name": "order:write",
+        "description": "Create/Update orders"
+      },
+      {
+        "client": "inventory-service",
+        "name": "inventory:read",
+        "description": "Read inventory"
+      },
+      {
+        "client": "inventory-service",
+        "name": "inventory:write",
+        "description": "Update inventory"
+      }
+    ]
+  },
+  "clientScopes": [
+    {
+      "name": "product:read",
+      "description": "Read access to product service",
+      "protocol": "openid-connect",
+      "attributes": {
+        "include.in.token.response": true,
+        "display.on.consent.screen": true
+      }
+    },
+    {
+      "name": "product:write",
+      "description": "Write access to product service",
+      "protocol": "openid-connect",
+      "attributes": {
+        "include.in.token.response": true,
+        "display.on.consent.screen": true
+      }
+    },
+    {
+      "name": "order:read",
+      "description": "Read access to order service",
+      "protocol": "openid-connect",
+      "attributes": {
+        "include.in.token.response": true,
+        "display.on.consent.screen": true
+      }
+    },
+    {
+      "name": "order:write",
+      "description": "Write access to order service",
+      "protocol": "openid-connect",
+      "attributes": {
+        "include.in.token.response": true,
+        "display.on.consent.screen": true
+      }
+    },
+    {
+      "name": "inventory:read",
+      "description": "Read access to inventory service",
+      "protocol": "openid-connect",
+      "attributes": {
+        "include.in.token.response": true,
+        "display.on.consent.screen": true
+      }
+    },
+    {
+      "name": "inventory:write",
+      "description": "Write access to inventory service",
+      "protocol": "openid-connect",
+      "attributes": {
+        "include.in.token.response": true,
+        "display.on.consent.screen": true
+      }
+    }
+  ],
+  "users": [
+    {
+      "username": "admin",
+      "enabled": true,
+      "emailVerified": true,
+      "email": "admin@ecommerce.com",
+      "firstName": "Admin",
+      "lastName": "User",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "admin123"
+        }
+      ],
+      "realmRoles": [
+        "admin"
+      ],
+      "clientRoles": {
+        "product-service": [
+          "product:read",
+          "product:write"
+        ],
+        "order-service": [
+          "order:read",
+          "order:write"
+        ],
+        "inventory-service": [
+          "inventory:read",
+          "inventory:write"
+        ]
+      }
+    },
+    {
+      "username": "customer",
+      "enabled": true,
+      "emailVerified": true,
+      "email": "customer@ecommerce.com",
+      "firstName": "John",
+      "lastName": "Doe",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "customer123"
+        }
+      ],
+      "realmRoles": [
+        "customer"
+      ]
+    }
+  ]
+}

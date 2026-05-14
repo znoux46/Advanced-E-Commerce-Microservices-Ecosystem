@@ -1,0 +1,78 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: order-service
+  
+  # PostgreSQL Database Configuration
+  datasource:
+    url: jdbc:postgresql://postgres:5432/ecommerce_db
+    username: ecommerce_user
+    password: SecureP@ss2024
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      connection-timeout: 30000
+  
+  # JPA Configuration
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+  
+  # Redis Configuration
+  data:
+    redis:
+      host: redis
+      port: 6379
+      timeout: 60000
+  
+  # Kafka Configuration
+  kafka:
+    bootstrap-servers: kafka:29092
+    consumer:
+      group-id: order-service-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+# KeyCloak Configuration
+keycloak:
+  auth-server-url: http://keycloak:8080
+  realm: ecommerce-realm
+  resource: order-service
+  credentials:
+    secret: order-secret-key
+  ssl-required: external
+
+# Swagger Configuration
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
+# Logging
+logging:
+  level:
+    com.ecommerce: DEBUG
+    org.springframework.kafka: INFO
+
+# Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: when-authorized

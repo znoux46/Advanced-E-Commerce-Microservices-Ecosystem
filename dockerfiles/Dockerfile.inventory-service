@@ -1,0 +1,49 @@
+# ================================================================================
+# Dockerfile For Inventory Service (.NET 8)
+# ================================================================================
+# Build Stage: Compile the application
+# ================================================================================
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+
+# Set working directory
+WORKDIR /src
+
+# Copy project files and restore dependencies
+COPY src/InventoryService/InventoryService.csproj ./InventoryService/
+RUN dotnet restore InventoryService/InventoryService.csproj
+
+# Copy all source files and build
+COPY src/InventoryService/ ./InventoryService/
+WORKDIR /src/InventoryService
+RUN dotnet publish -c Release -o /app/publish --no-restore
+
+# ================================================================================
+# Runtime Stage: Run the application
+# ================================================================================
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
+
+# Set working directory
+WORKDIR /app
+
+# Install dependencies for PostgreSQL
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    gnupg \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy published files from build stage
+COPY --from=build /app/publish .
+
+# Set environment variables
+ENV ASPNETCORE_ENVIRONMENT=Production
+ENV ASPNETCORE_URLS=http://+:5001
+
+# Expose port
+EXPOSE 5001
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --retries=3 \
+    CMD curl -f http://localhost:5001/health || exit 1
+
+# Entry point
+ENTRYPOINT ["dotnet", "InventoryService.dll"]
